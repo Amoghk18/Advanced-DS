@@ -67,12 +67,43 @@ void printList(Node* head){
     }  
 }
 
+void delete_front(Node** head){
+    if(*head == NULL){
+        return;
+    }
+    
+    Node* next = (*head)->next;
+    Node* nodeNextToNext = Xor(next->next, *head);
+    next->next = nodeNextToNext;
+    free(*head);
+    *head = next;
+}
+
+void delete_end(Node** head){
+    if(*head == NULL){
+        return;
+    }
+    Node* prev = NULL;
+    Node* curr = *head;
+    Node* next = Xor(prev, curr->next);
+    while (next != NULL)
+    { 
+        prev = curr;
+        curr = next;
+        next = Xor(prev, curr->next);
+    }
+    Node* nodePrevToPrev = Xor(curr, prev->next);
+    prev->next = nodePrevToPrev;
+    free(curr);
+}
+
 int main(){
     Node *head = NULL;  
     insert_Atend(&head, 10);  
     insert_Atend(&head, 20);  
     insert_Atend(&head, 30);  
     insert_Atend(&head, 40);
+    insert_front(&head, 50);
     printList(head);
     return 0;
 }
