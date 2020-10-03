@@ -6,15 +6,15 @@ class Node
 public: 
     int key; 
     Node **next; 
-    Node(int, int); 
+    Node(int data, int level) 
+    { 
+        key = data; 
+        next = new Node*[level+1]; 
+        memset(next, 0, sizeof(Node*) * (level+1)); 
+    }; 
 }; 
   
-Node::Node(int data, int level) 
-{ 
-    key = data; 
-    next = new Node*[level+1]; 
-    memset(next, 0, sizeof(Node*) * (level+1)); 
-}; 
+
   
 class SkipList 
 { 
@@ -22,14 +22,7 @@ class SkipList
     float P; 
     int level; 
     Node *head; 
-public: 
-    // SkipList(int, float); 
-    // int randomLevel(); 
-    // Node* createNode(int, int); 
-    // void insertNode(int); 
-    // void deleteElement(int);
-    // void searchElement(int);
-    // void displayList(); 
+public:  
     SkipList(int maxlvl, float prob) 
     { 
         MAXLVL = maxlvl; 
@@ -161,17 +154,17 @@ int main()
     SkipList lst(3, 0.5); 
   
     lst.insertNode(3); 
-    lst.insertNode(6); 
-    lst.insertNode(7); 
-    lst.insertNode(9); 
-    lst.insertNode(12); 
-    lst.insertNode(19); 
+    lst.insertNode(10); 
+    lst.insertNode(14); 
     lst.insertNode(17); 
-    lst.insertNode(26); 
-    lst.insertNode(21); 
-    lst.insertNode(25); 
+    lst.insertNode(30); 
+    lst.insertNode(32); 
+    lst.insertNode(50); 
+    lst.insertNode(55); 
+    lst.insertNode(58); 
+    lst.insertNode(5); 
     lst.display(); 
-    lst.deleteNode(19);
+    lst.deleteNode(30);
     lst.display();
     lst.search(17);
     lst.search(500);
