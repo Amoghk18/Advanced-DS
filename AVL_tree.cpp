@@ -182,31 +182,3 @@ int main(){
     }
     return 0;
 }
-
-/*
-root = insertAVL(root, 50);
-    root = insertAVL(root, 30);
-    root = insertAVL(root, 70);
-    root = insertAVL(root, 15);
-    root = insertAVL(root, 85);
-    root = insertAVL(root, 80);
-    cout << "Inorder : ";
-    printInorder(root);
-    cout << "" << endl;
-    root = insertAVL(root, 10);
-    cout << "Inorder : ";
-    printInorder(root);
-    cout << "" << endl;
-    root = insertAVL(root, 5);
-    cout << "Inorder : ";
-    printInorder(root);
-    cout << "" << endl;
-    root = insertAVL(root, 13);
-    cout << "Inorder : ";
-    printInorder(root);
-    cout << "" << endl;
-    deleteAVL(root, 70);
-    cout << "Inorder : ";
-    printInorder(root);
-    cout << "" << endl;
-*/
