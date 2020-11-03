@@ -41,17 +41,36 @@ Node* deleteNode(Node* root, int val){
         root->left = deleteNode(root->left, val);
     else if(val < root->rval && val > root->lval)
         root->middle = deleteNode(root->middle, val);
-    else if(val > root->rval)
+    else if(val > root->rval && root->rval != -1)
         root->right = deleteNode(root->right, val);
     else if(val == root->lval || val == root->rval){
         if(root->lval == val){
             if(root->left == NULL){
-                cout << "deleted" << endl;
-                root->lval = root->rval;
-                root->rval = -1;
+                if(root->right != NULL){
+                    root->lval = root->right->lval;
+                    root->right->lval = root->right->rval;
+                    root->right->rval = -1;
+                }
+                else if(root->rval != -1){
+                    root->lval = root->rval;
+                    root->rval = -1;
+                }
+                else return NULL;
             }else{
-                root->lval = root->left->rval;
-                root->left->rval = -1;   
+                if(root->rval != -1){
+                    root->lval = root->rval;
+                    root->rval = -1;
+                }
+                else{
+                    if(root->left->rval != -1){
+                        root->lval = root->left->rval;
+                        root->left->rval = -1;
+                    }
+                    else{
+                        root->lval = root->left->lval;
+                        root->left = NULL;
+                    }
+                }
             }
         }else if(root->rval == val){
             if(root->right == NULL){
@@ -84,19 +103,56 @@ void printPreorder(Node* root){
 
 int main(){
     Node* root = NULL;
-    root = insert(root, 40);
-    root = insert(root, 20);
-    root = insert(root, 60);
-    root = insert(root, 10);
-    root = insert(root, 50);
-    root = insert(root, 55);
-    root = insert(root, 80);
-    root = insert(root, 70);
-    root = insert(root, 75);
-    printPreorder(root);
-    cout << endl;
-    deleteNode(root, 10);
-    printPreorder(root);
-    cout << endl;
+    int x = 0;
+    while(x==0){
+        cout << "Enter \n 1 to insert \n 2 to delete \n 3 to print \n 4 to exit" << endl;
+        cin >> x;
+        switch(x){
+        case 1:
+            cout << "Enter number to be inserted : ";
+            cin >> x;  
+            root = insert(root, x);
+            break;
+        case 2:
+            if(root == NULL){
+                cout << "Cannot delete as tree is empty" << endl;
+                break;
+            }
+            cout << "Enter number to be deleted : ";
+            cin >> x;
+            root = deleteNode(root, x);
+            break;
+        case 3:
+            if(root == NULL){
+                cout << "Nothing to show, Tree is NULL" <<  endl;
+                break;
+            }
+            cout << "Preorder : ";
+            printPreorder(root);
+            cout << endl;
+            break;
+        case 4:
+            exit(0);
+        default:
+            cout << "Enter valid number";
+            break;
+        }
+        x = 0;
+    }
     return 0;
 }
+
+// root = insert(root, 40);
+//     root = insert(root, 20);
+//     root = insert(root, 60);
+//     root = insert(root, 10);
+//     root = insert(root, 50);
+//     root = insert(root, 55);
+//     root = insert(root, 80);
+//     root = insert(root, 70);
+//     root = insert(root, 75);
+//     printPreorder(root);
+//     cout << endl;
+//     deleteNode(root, 60);
+//     printPreorder(root);
+//     cout << endl;
