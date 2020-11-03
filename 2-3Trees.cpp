@@ -141,18 +141,3 @@ int main(){
     }
     return 0;
 }
-
-// root = insert(root, 40);
-//     root = insert(root, 20);
-//     root = insert(root, 60);
-//     root = insert(root, 10);
-//     root = insert(root, 50);
-//     root = insert(root, 55);
-//     root = insert(root, 80);
-//     root = insert(root, 70);
-//     root = insert(root, 75);
-//     printPreorder(root);
-//     cout << endl;
-//     deleteNode(root, 60);
-//     printPreorder(root);
-//     cout << endl;
