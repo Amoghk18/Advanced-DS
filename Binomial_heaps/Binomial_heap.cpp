@@ -169,23 +169,7 @@ void printHeap(list<Node*> _heap){
 
 
 int main() {
-	//int ch,key; 
 	list<Node*> _heap; 
-	// _heap = insert(_heap,10); 
-	// _heap = insert(_heap,20); 
-	// _heap = insert(_heap,30); 
-
-	// cout << "Heap elements after insertion:\n"; 
-	// printHeap(_heap); 
-
-	// Node *temp = getMin(_heap); 
-	// cout << "\nMinimum element of heap "
-	// 	<< temp->data << "\n"; 
-
-	
-	// _heap = extractMin(_heap); 
-	// cout << "Heap after deletion of minimum element\n"; 
-	// printHeap(_heap); 
 
     int x = 0;
     while(x == 0){
